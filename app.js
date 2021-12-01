@@ -27,36 +27,55 @@ headDropdown.addEventListener('change', () => {
     headCount++;
 
     // update the dom for the head
-    headEl.img = '';
+    headEl.textContent = '';
 
     let headImg = document.createElement('img');
     headImg.src = `./assets/${headValue}-head.png`;
     headEl.append(headImg);
 
     // update the stats to show the new count
-    reportEl.append(headCount);
+    displayStats(headCount);
+
 });
 
 
 middleDropdown.addEventListener('change', () => {
     // get the value of the middle dropdown
+    let middleValue = middleDropdown.value;
 
     // increment the middle change count state
-    
+    middleCount++;
+
     // update the dom for the middle
+    middleEl.textContent = '';
+
+    let middleImg = document.createElement('img');
+    middleImg.src = `./assets/${middleValue}-middle.png`;
+    middleEl.append(middleImg);
 
     // update the stats to show the new count
+    displayStats(middleCount);
+
 });
 
 
 bottomDropdown.addEventListener('change', () => {
     // get the value of the bottom dropdown
+   let bottomValue = bottomDropdown.value;
 
     // increment the bottom change count state
-    
+    bottomCount++;
+
     // update the dom for the bottom
+    bottomEl.textContent = '';
+
+    let bottomImg = document.createElement('img');
+    bottomImg.src = `./assets/${bottomValue}-pants.png`;
+    bottomEl.append(bottomImg);
 
     // update the stats to show the new count
+    displayStats(bottomCount);
+
 });
 
 catchphraseButton.addEventListener('click', () => {
