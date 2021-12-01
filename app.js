@@ -12,16 +12,29 @@ const catchphraseInput = document.getElementById('catchphrase-input');
 const catchphraseButton = document.getElementById('catchphrase-button');
 
 // set state for how many times the user changes the head, middle, and bottom
+let headCount = 0;
+let middleCount = 0;
+let bottomCount = 0;
+
 // set state for all of the character's catchphrases
+let catchphraseArray = [];
 
 headDropdown.addEventListener('change', () => {
     // get the value of the head dropdown
+    let headValue = headDropdown.value; 
 
     // increment the head change count state
-    
+    headCount++;
+
     // update the dom for the head
+    headEl.img = '';
+
+    let headImg = document.createElement('img');
+    headImg.src = `./assets/${headValue}-head.png`;
+    headEl.append(headImg);
 
     // update the stats to show the new count
+    reportEl.append(headCount);
 });
 
 
