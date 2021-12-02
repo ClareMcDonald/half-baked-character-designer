@@ -102,7 +102,7 @@ function displayStats() {
 
     reportEl.textContent = `You clicked the head ${headCount} times, the middle ${middleCount} times, and the bottom ${bottomCount} times.`;
 
-    const statsString = makeStatsString(); // call this function with the correct arguments
+    const statsString = makeStatsString(headCount, middleCount, bottomCount); // call this function with the correct arguments
 }
 
 function displayCatchphrases() {
