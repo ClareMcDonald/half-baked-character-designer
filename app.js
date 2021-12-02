@@ -10,7 +10,6 @@ const reportEl = document.getElementById('report');
 const catchphrasesEl = document.getElementById('catchphrases');
 const catchphraseInput = document.getElementById('catchphrase-input');
 const catchphraseButton = document.getElementById('catchphrase-button');
-console.log(catchphrasesEl);
 
 // set state for how many times the user changes the head, middle, and bottom
 let headCount = 0;
