@@ -7,9 +7,10 @@ const headEl = document.getElementById('head');
 const middleEl = document.getElementById('middle');
 const bottomEl = document.getElementById('bottom');
 const reportEl = document.getElementById('report');
-const chatchphrasesEl = document.getElementById('chatchphrases');
+const catchphrasesEl = document.getElementById('catchphrases');
 const catchphraseInput = document.getElementById('catchphrase-input');
 const catchphraseButton = document.getElementById('catchphrase-button');
+console.log(catchphrasesEl);
 
 // set state for how many times the user changes the head, middle, and bottom
 let headCount = 0;
@@ -21,7 +22,7 @@ let catchphraseArray = [];
 
 headDropdown.addEventListener('change', () => {
     // get the value of the head dropdown
-    let headValue = headDropdown.value; 
+    const headValue = headDropdown.value; 
 
     // increment the head change count state
     headCount++;
@@ -29,19 +30,19 @@ headDropdown.addEventListener('change', () => {
     // update the dom for the head
     headEl.textContent = '';
 
-    let headImg = document.createElement('img');
+    const headImg = document.createElement('img');
     headImg.src = `./assets/${headValue}-head.png`;
     headEl.append(headImg);
 
     // update the stats to show the new count
-    displayStats(headCount);
+    displayStats();
 
 });
 
 
 middleDropdown.addEventListener('change', () => {
     // get the value of the middle dropdown
-    let middleValue = middleDropdown.value;
+    const middleValue = middleDropdown.value;
 
     // increment the middle change count state
     middleCount++;
@@ -49,19 +50,19 @@ middleDropdown.addEventListener('change', () => {
     // update the dom for the middle
     middleEl.textContent = '';
 
-    let middleImg = document.createElement('img');
+    const middleImg = document.createElement('img');
     middleImg.src = `./assets/${middleValue}-middle.png`;
     middleEl.append(middleImg);
 
     // update the stats to show the new count
-    displayStats(middleCount);
+    displayStats();
 
 });
 
 
 bottomDropdown.addEventListener('change', () => {
     // get the value of the bottom dropdown
-   let bottomValue = bottomDropdown.value;
+    const bottomValue = bottomDropdown.value;
 
     // increment the bottom change count state
     bottomCount++;
@@ -69,35 +70,50 @@ bottomDropdown.addEventListener('change', () => {
     // update the dom for the bottom
     bottomEl.textContent = '';
 
-    let bottomImg = document.createElement('img');
+    const bottomImg = document.createElement('img');
     bottomImg.src = `./assets/${bottomValue}-pants.png`;
     bottomEl.append(bottomImg);
 
     // update the stats to show the new count
-    displayStats(bottomCount);
+    displayStats();
 
 });
 
 catchphraseButton.addEventListener('click', () => {
     // get the value of the catchphrase input
-    
+    const newCatchphrase = catchphraseInput.value;
+
     // push the new catchphrase to the catchphrase array in state
-    // update the dom for the bottom
+    catchphraseArray.push(newCatchphrase);
+
+    // update the dom for the 
+    // catchphrasesEl.append(catchphraseArray);
+
     // clear out the form input's value so it's empty to the user
+    catchphraseInput.value = '';
+
     // update the dom to show the new catchphrases (call a function to do this work)
+    displayCatchphrases();
 
 });
 
 function displayStats() {
     // change the text contentof the reportEl to tell the user how many times they've changed each piece of the state
+
+    reportEl.textContent = `You clicked the head ${headCount} times, the middle ${middleCount} times, and the bottom ${bottomCount} times.`;
+
     const statsString = makeStatsString(); // call this function with the correct arguments
 }
 
 function displayCatchphrases() {
-    // clear out the DOM for the currently displayed catchphrases
+    catchphrasesEl.textContent = '';
 
-    // loop through each catchphrase in state
-    // and for each catchphrase
-    // create an HTML element with the catchphrase as its text content
-    // and append that HTML element to the cleared-out DOM
+    for (let phrase of catchphraseArray) {
+
+        const p = document.createElement('p');
+
+        p.textContent = phrase;
+
+        catchphrasesEl.append(p);
+    }
 }
